@@ -1,7 +1,7 @@
 {
 	"general-sum": {
 		"description": "General requests data aggregated by time span.",
-		"query": "SELECT [time] AS timeSpan, COUNT(correlationId) AS calls, SUM(durationMs) AS duration FROM requests GROUP BY timeSpan ORDER BY timeSpan"
+		"query": "SELECT [time] AS timeSpan, COUNT(correlationId) AS calls, SUM(durationMs) AS duration FROM requests GROUP BY timeSpan"
 	},
 	"full": {
 		"description": "All attributes logged.",
@@ -9,18 +9,22 @@
 	},
 	"operations": {
 		"description": "API/operation requests by time span.",
-		"query": "SELECT [time] AS timeSpan, apiId, method, operationId, SUM(requestSize) as requestSize, SUM(responseSize) as responseSize, COUNT(correlationId) AS calls, SUM(durationMs) AS duration FROM requests GROUP BY timeSpan, apiId, method, operationId ORDER BY timeSpan, apiId, method, operationId"
+		"query": "SELECT [time] AS timeSpan, apiId, method, operationId, NVL(SUM(requestSize),0) as requestSize, SUM(responseSize) as responseSize, COUNT(correlationId) AS calls, SUM(durationMs) AS duration FROM requests GROUP BY timeSpan, apiId, method, operationId"
 	},
 	"apis": {
 		"description": "API requests by time span.",
-		"query": "SELECT [time] AS timeSpan, apiId, SUM(requestSize) as requestSize, SUM(responseSize) as responseSize, COUNT(correlationId) AS calls, SUM(durationMs) AS duration FROM requests GROUP BY timeSpan, apiId ORDER BY timeSpan, apiId"
+		"query": "SELECT [time] AS timeSpan, apiId, SUM(requestSize) as requestSize, SUM(responseSize) as responseSize, COUNT(correlationId) AS calls, SUM(durationMs) AS duration FROM requests GROUP BY timeSpan, apiId"
 	},
 	"backends": {
 		"description": "Backend requests by time span.",
-		"query": "SELECT [time] AS timeSpan, parse_url(backendUrl,'HOST') as backend, COUNT(correlationId) AS calls, SUM(backendTime) AS duration FROM requests GROUP BY timeSpan, backend ORDER BY timeSpan, backend"
+		"query": "SELECT [time] AS timeSpan, parse_url(backendUrl,'HOST') as backend, COUNT(correlationId) AS calls, SUM(backendTime) AS duration FROM requests GROUP BY timeSpan, backend"
 	},
 	"cache-candidates": {
 		"description": "URLs of requests that might be good candidates of a caching strategy.",
 		"query": "SELECT url, COUNT(timeSpan) AS times, SUM(calls) AS calls, (SUM(duration) / SUM(calls)) AS avgDuration FROM (SELECT CONCAT(SUBSTR(time,0,16),':00.0Z') AS timeSpan, url, responseSize, COUNT(correlationId) AS calls, SUM(durationMs) AS duration FROM requests WHERE method = \"GET\" AND durationMs > 1000 GROUP BY timeSpan, url, responseSize HAVING calls > 1) GROUP BY url HAVING times > 10 ORDER BY calls DESC"
+	},
+	"callers": {
+		"description": "CallerIP requests by time span.",
+		"query": "SELECT [time] AS timeSpan, callerIpAddress, SUM(requestSize) as requestSize, SUM(responseSize) as responseSize, COUNT(correlationId) AS calls, SUM(durationMs) AS duration FROM requests GROUP BY timeSpan, callerIpAddress"
 	}
 }
