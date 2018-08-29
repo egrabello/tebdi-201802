@@ -10,5 +10,8 @@ ARQUIVOS DE CONFIGURAÇÃO:
 - config.json --> Parâmetros gerais de configuração, utilizados pelos programas (.py)
 - reports.json --> Lista / cadastro de relatórios utilizados na API Web (web-api.py)
 
+VISUALIZAÇÃO:
+- dashboard.pbix --> Painel construído à partir das APIs desenvolvidas
+
 EXTRAS:
 - /notebooks --> Diretório com notebooks Jupyter utilizados para testes / desenvolvimento
