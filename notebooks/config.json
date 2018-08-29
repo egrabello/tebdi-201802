@@ -1,0 +1,5 @@
+{
+	"baseURL": "/home/egberto/TEBDI",
+	"baseBlob": "/logs/AZBRSP1APIP001",
+	"baseHDFS": "hdfs://localhost:9000/api-logs"
+}
