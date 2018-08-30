@@ -10,11 +10,10 @@ ARQUIVOS DE CONFIGURAÇÃO:
 - config.json --> Parâmetros gerais de configuração, utilizados pelos programas (.py)
 - reports.json --> Lista / cadastro de relatórios utilizados na API Web (web-api.py)
 
-VISUALIZAÇÃO:
-- /dashboard
- > dashboard.pbix --> Painel construído à partir das APIs desenvolvidas
- > apis.csv --> Arquivo CSV com a lista de APIs (ID e Nome)
- > operations --> Arquivo CSV com a lista de Operações (ID da API, ID e Nome da Operação)
+VISUALIZAÇÃO (/dashboard):
+- /dashboard/dashboard.pbix --> Painel construído à partir das APIs desenvolvidas
+- /dashboard/apis.csv --> Arquivo CSV com a lista de APIs (ID e Nome)
+- /dashboard/operations.csv --> Arquivo CSV com a lista de Operações (ID da API, ID e Nome da Operação)
 
 EXTRAS:
 - /notebooks --> Diretório com notebooks Jupyter utilizados para testes / desenvolvimento
