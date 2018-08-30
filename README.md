@@ -11,7 +11,10 @@ ARQUIVOS DE CONFIGURAÇÃO:
 - reports.json --> Lista / cadastro de relatórios utilizados na API Web (web-api.py)
 
 VISUALIZAÇÃO:
-- dashboard.pbix --> Painel construído à partir das APIs desenvolvidas
+- /dashboard
+ > dashboard.pbix --> Painel construído à partir das APIs desenvolvidas
+ > apis.csv --> Arquivo CSV com a lista de APIs (ID e Nome)
+ > operations --> Arquivo CSV com a lista de Operações (ID da API, ID e Nome da Operação)
 
 EXTRAS:
 - /notebooks --> Diretório com notebooks Jupyter utilizados para testes / desenvolvimento
