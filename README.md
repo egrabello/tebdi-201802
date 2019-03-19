@@ -17,3 +17,5 @@ VISUALIZAÇÃO ("/dashboard/"):
 
 EXTRAS:
 - /notebooks --> Diretório com notebooks Jupyter utilizados para testes / desenvolvimento
+
+Autor: Egberto Rabello
